@@ -3,6 +3,7 @@ import express from 'express';
 import { SERVER_PORT } from '../global/environment';
 import socketIO from 'socket.io';
 import http from 'http';
+import * as socket from '../sockets/socket';
 
 export default class Server {
 
@@ -12,6 +13,7 @@ export default class Server {
     public port: number;
     public io : socketIO.Server;
     private httpServer : http.Server;
+
 
     private constructor() {
 
@@ -33,9 +35,8 @@ export default class Server {
     private escucharSocket (){
         this.io.on('connection', cliente =>{
             console.log('Cliente conectado.');
-            cliente.on('disconnect',()=>{
-                console.log('Cliente Desconectado');
-            });
+            socket.desconectar( cliente );
+            socket.mensaje(cliente, this.io );
         })
    
     }

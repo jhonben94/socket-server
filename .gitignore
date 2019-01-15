@@ -4,3 +4,9 @@ dist/
 
 node_modules/
 package-lock.json
+.idea/01-server.iml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
