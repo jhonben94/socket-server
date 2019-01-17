@@ -34,9 +34,13 @@ export default class Server {
 
     private escucharSocket (){
         this.io.on('connection', cliente =>{
-            console.log('Cliente conectado.');
+            //console.log(cliente.id)
+            // conectar cliente 
+            socket.conectarCliente(cliente);
+            // #1 Config usuario.
             socket.desconectar( cliente );
             socket.mensaje(cliente, this.io );
+            socket.configurarUsuario(cliente, this.io );
         })
    
     }
